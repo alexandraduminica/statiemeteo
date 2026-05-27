@@ -19,10 +19,10 @@ Mini - TV Weather Station
 3. Hardware Components and Techincal Specifications
 
    a. Microcontroller ESP32 DevKitBoard (38-Pin Version)
-       - Processor: Dual-Core Xtensa 32-bit LX6 SoC, clocking speeds up to          240 MHz.
-       - Connectivity: Integrated Wi-Fi and Bluetooth Low Energy stack.
-       - Project Role: Centralized Processing Edge Node. Handles the                TCP/IP stack, queries I2C bus, parses incoming HTTPS JSON                  strings, renders the local GUI on the SPI screen and manages               asynchronus MQTT publishing.
-       - Pinout Map: GPIO21 - SDA (Sensor I2C Bus Data), GPIO22 - SCL               (Sensor I2C Bus Clock), GPIO13 - SCK/Clock (TFT Screen SPI BUS),           GPIO14 - MOSI/SDA (TFT Screen SPI Bus Data), GPIO27 - DC                   (Data/Command Selection - TFT), GPIO4 - RST (Hardware Reset -              TFT), GPIO5 - CS (Chip Select - TFT)
+     - Processor: Dual-Core Xtensa 32-bit LX6 SoC, clocking speeds up to          240 MHz.
+     - Connectivity: Integrated Wi-Fi and Bluetooth Low Energy stack.
+     - Project Role: Centralized Processing Edge Node. Handles the                TCP/IP stack, queries I2C bus, parses incoming HTTPS JSON                  strings, renders the local GUI on the SPI screen and manages               asynchronus MQTT publishing.
+    - Pinout Map: GPIO21 - SDA (Sensor I2C Bus Data), GPIO22 - SCL               (Sensor I2C Bus Clock), GPIO13 - SCK/Clock (TFT Screen SPI BUS),           GPIO14 - MOSI/SDA (TFT Screen SPI Bus Data), GPIO27 - DC                   (Data/Command Selection - TFT), GPIO4 - RST (Hardware Reset -              TFT), GPIO5 - CS (Chip Select - TFT)
 
    b. Sensors: AHT20 + BMP280 Combo Module
      This space-saving module incorporates two specialized silicon sensor   dies on a single breakout board, utilizing unique Hex addresses on a       shared I2C physical backplane:
