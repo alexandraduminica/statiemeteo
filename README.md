@@ -36,6 +36,13 @@ Mini - TV Weather Station
 
 <img width="1067" height="965" alt="image" src="https://github.com/user-attachments/assets/d18854ce-95ca-4c64-aa3d-ff897ff52a90" />
 
+<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/4fb2e322-9e5a-4aa1-b81d-68ed93a12d04" />
+
+<img width="1329" height="1600" alt="image" src="https://github.com/user-attachments/assets/0eae639a-6af8-4c9f-bb71-11e15d1ff858" />
+
+<img width="900" height="1000" alt="image" src="https://github.com/user-attachments/assets/2ebfe7b9-0115-4e72-bc16-2a49e53d4b04" />
+
+
 4. Functional Algorithm
     1. Hardware Initialization: The system mounts a software Wire instance on the desigated I2C pins and verifies that target chips are active. The ST7735 display engine is initialiez to render the custom boot layout.
     2. Network Synchronization: The ESP32 boots its station modul, authenticates with the local WI-FI access point, and obtains a dynamic IP address via DHCP. The step-by-step progress is logged onto the TFT display.
