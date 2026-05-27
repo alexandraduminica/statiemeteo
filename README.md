@@ -14,7 +14,7 @@ Mini - TV Weather Station
 
   The diagram below illustrates the multi-tier structural topology, information routing and network protocol orchestration utilzied in this IoT station:
 
-<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/ff7030d8-24d0-4210-a89f-d27f8e6e108d" />
+<img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/ff7030d8-24d0-4210-a89f-d27f8e6e108d" />
 
 3. Hardware Components and Techincal Specifications
 
