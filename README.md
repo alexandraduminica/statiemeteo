@@ -45,19 +45,23 @@ Mini - TV Weather Station
     6. Cloud Transmission (MQTT Push): The system verifies its state with the public HiveMQ broker.
        
 6. User Interfaces (Dashboard)
+
     Mobile Dashboard (IoT MQTT Panel): smartphone ready command center, the mobile interface subscribes to the respective MQTT topics broadcasted by the HiveMQ server, mapping strings directly to custom interactive widgets: Radial Dynamic Gauges, Telemetry Output Grid, Dual Status Trackers.
-<img width="2559" height="1510" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
 
     Web Dashboard: The interfata_web.html frontend application resides in the root directory and is automatically compiled into a live, public-facing dashboard. The application utilizes an MQTT over WebSockets library to establish a persistent connection with the public HiveMQ cloud instance straight from the client's web browser.
 
-7. Software Stack and Dependencies
+<img width="849" height="1600" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
+
+    
+<img width="2559" height="1510" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
+
+8. Software Stack and Dependencies
   The firmware arhitecture was compiled inside the PlatformIO ecosystem targetting the Arduion framework abstraction layers:
   - Adafruit_GFX & Adafruit_ST7735 - High speed hardware control for the SPI TFT monitor.
   - Adafruit_BMP280_library & Adafruit_AHT20 - Low-level register drivers for I2C sensory stack.
   - ArduinoJson - zero-copy parsing of massive OpenWeatherMap REST payloads.
   - PubSubClient - Robust asynchronus message routing handling MQTT over TCP connections.
 
-<img width="849" height="1600" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
 
 
 
