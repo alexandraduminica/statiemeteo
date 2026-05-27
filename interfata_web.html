@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Weather Dashboard</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+
+    <header class="bg-slate-800 border-b border-slate-700 py-6 text-center shadow-lg">
+        <h1 class="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            METEO STATION <span class="text-slate-400 font-light text-xl">| IoT Dashboard</span>
+        </h1>
+        <div class="flex justify-center items-center gap-2 mt-2">
+            <span id="status-led" class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+            <span id="status-text" class="text-xs text-slate-400 font-medium">Se conectează la server...</span>
+        </div>
+    </header>
+
+    <main class="max-w-5xl w-full mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-max">
+        
+        <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700/50 transform hover:scale-[1.02] transition-all flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+                <span class="text-sm font-semibold tracking-wider text-slate-400 uppercase">Temp. Cameră</span>
+                <span class="text-3xl">🌡️</span>
+            </div>
+            <div class="mt-4">
+                <span id="temp-local" class="text-5xl font-black text-cyan-400">--</span>
+                <span class="text-2xl font-bold text-cyan-400">°C</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">Senzor fizic BMP280</p>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700/50 transform hover:scale-[1.02] transition-all flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+                <span class="text-sm font-semibold tracking-wider text-slate-400 uppercase">Umiditate</span>
+                <span class="text-3xl">💧</span>
+            </div>
+            <div class="mt-4">
+                <span id="hum-local" class="text-5xl font-black text-blue-400">--</span>
+                <span class="text-2xl font-bold text-blue-400">%</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">Senzor fizic AHT20</p>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700/50 transform hover:scale-[1.02] transition-all flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+                <span class="text-sm font-semibold tracking-wider text-slate-400 uppercase">București (Net)</span>
+                <span class="text-3xl">🌐</span>
+            </div>
+            <div class="mt-2">
+                <span id="temp-online" class="text-4xl font-black text-emerald-400">--</span>
+                <span class="text-xl font-bold text-emerald-400">°C</span>
+                <div id="stare-text" class="text-sm font-medium text-slate-300 mt-1">Se descarcă...</div>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">OpenWeatherMap API</p>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700/50 md:col-span-3">
+            <h3 class="text-lg font-bold text-slate-300 mb-4 flex items-center gap-2">
+                <span>📈</span> Istoric Temperatură în Timp Real
+            </h3>
+            <div class="w-full h-64">
+                <canvas id="realtimeChart"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-950 py-4 text-center text-xs text-slate-600 border-t border-slate-900">
+        Proiect IoT Stație Meteo Inteligentă &copy; 2026
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('realtimeChart').getContext('2d');
+        const maxDataPoints = 15;
+        
+        const chartData = {
+            labels: [],
+            datasets: [{
+                label: 'Temperatura din Cameră (°C)',
+                data: [],
+                borderColor: '#22d3ee',
+                backgroundColor: 'rgba(34, 211, 238, 0.1)',
+                borderWidth: 3,
+                tension: 0.4,
+                fill: true
+            }]
+        };
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
+                y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+            },
+            plugins: { legend: { display: false } }
+        };
+
+        const weatherChart = new Chart(ctx, { type: 'line', data: chartData, options: chartOptions });
+
+        function updateChart(newValue) {
+            const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            
+            if (chartData.labels.length >= maxDataPoints) {
+                chartData.labels.shift();
+                chartData.datasets[0].data.shift();
+            }
+            
+            chartData.labels.push(now);
+            chartData.datasets[0].data.push(parseFloat(newValue));
+            weatherChart.update();
+        }
+
+        const options = {
+            clientId: 'web_client_' + Math.random().toString(16).substr(2, 8),
+            keepalive: 60,
+            clean: true,
+            reconnectPeriod: 5000
+        };
+
+        const client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt', options);
+
+        const led = document.getElementById('status-led');
+        const statusText = document.getElementById('status-text');
+
+        client.on('connect', () => {
+            led.className = "w-3 h-3 rounded-full bg-emerald-500 animate-pulse";
+            statusText.innerText = "Conectat la Cloud. Se așteaptă date...";
+            
+            client.subscribe('statie/meteo/locala/temperatura');
+            client.subscribe('statie/meteo/locala/umiditate');
+            client.subscribe('statie/meteo/online/temperatura');
+            client.subscribe('statie/meteo/online/stare_text');
+        });
+
+        client.on('close', () => {
+            led.className = "w-3 h-3 rounded-full bg-red-500";
+            statusText.innerText = "Deconectat de la server. Se reîncearcă...";
+        });
+
+        client.on('message', (topic, message) => {
+            const val = message.toString();
+            
+            if (topic === 'statie/meteo/locala/temperatura') {
+                document.getElementById('temp-local').innerText = val;
+                updateChart(val);
+            }
+            if (topic === 'statie/meteo/locala/umiditate') {
+                document.getElementById('hum-local').innerText = val;
+            }
+            if (topic === 'statie/meteo/online/temperatura') {
+                document.getElementById('temp-online').innerText = val;
+            }
+            if (topic === 'statie/meteo/online/stare_text') {
+                document.getElementById('stare-text').innerText = val;
+            }
+        });
+    </script>
+</body>
+</html>
