@@ -46,9 +46,14 @@ Mini - TV Weather Station
        
 6. User Interfaces (Dashboard)
 
-    Mobile Dashboard (IoT MQTT Panel): smartphone ready command center, the mobile interface subscribes to the respective MQTT topics broadcasted by the HiveMQ server, mapping strings directly to custom interactive widgets: Radial Dynamic Gauges, Telemetry Output Grid, Dual Status Trackers.
+    A. Mobile Dashboard (IoT MQTT Panel): The terminal interface maps live feeds into specialized user components on a smartphone by binding to the HiveMQ message cloud. The app processes the following distinct paths published by the ESP32:
+   - statie/meteo/locala/temperatura: Renders a dynamic radial gauge            highlighting indoor temperature values.
+   - statie/meteo/locala/umiditate: Renders an instrumentation dial             reflecting room humidity levels.
+   - statie/meteo/locala/presiune: Houses an explicit text field                outputting local ambient pressure.
+   - statie/meteo/online/temperatura: Tracks the OpenWeather base station       regional reference layer.
+   - statie/meteo/online/id_vreme & stare_text: Feeds string blocks             displaying current translated weather data.
 
-    Web Dashboard: The interfata_web.html frontend application resides in the root directory and is automatically compiled into a live, public-facing dashboard. The application utilizes an MQTT over WebSockets library to establish a persistent connection with the public HiveMQ cloud instance straight from the client's web browser.
+    B. Web Dashboard: The interfata_web.html frontend application resides in the root directory and is automatically compiled into a live, public-facing dashboard. The application utilizes an MQTT over WebSockets library to establish a persistent connection with the public HiveMQ cloud instance straight from the client's web browser.
 
 <img width="849" height="1600" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
 
