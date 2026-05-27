@@ -62,10 +62,10 @@ Mini - TV Weather Station
 
     B. Web Dashboard: The interfata_web.html frontend application resides in the root directory and is automatically compiled into a live, public-facing dashboard. The application utilizes an MQTT over WebSockets library to establish a persistent connection with the public HiveMQ cloud instance straight from the client's web browser.
 
-<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
+<img width="500" height="700" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
 
     
-<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
+<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
 
 6. Software Stack and Dependencies
   The firmware arhitecture was compiled inside the PlatformIO ecosystem targetting the Arduion framework abstraction layers:
