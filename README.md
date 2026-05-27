@@ -44,7 +44,7 @@ Mini - TV Weather Station
     5. Edge UI Refresh: The updated datasets (local temperature, local humidity, barometric pressure, external temperature and translated condition text) are cleanly refreshed on the ST7735 screen
     6. Cloud Transmission (MQTT Push): The system verifies its state with the public HiveMQ broker.
        
-6. User Interfaces (Dashboard)
+5. User Interfaces (Dashboard)
 
     A. Mobile Dashboard (IoT MQTT Panel): The terminal interface maps live feeds into specialized user components on a smartphone by binding to the HiveMQ message cloud. The app processes the following distinct paths published by the ESP32:
    - statie/meteo/locala/temperatura: Renders a dynamic radial gauge            highlighting indoor temperature values.
@@ -60,7 +60,7 @@ Mini - TV Weather Station
     
 <img width="2559" height="1510" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
 
-7. Software Stack and Dependencies
+6. Software Stack and Dependencies
   The firmware arhitecture was compiled inside the PlatformIO ecosystem targetting the Arduion framework abstraction layers:
   - Adafruit_GFX & Adafruit_ST7735 - High speed hardware control for the SPI TFT monitor.
   - Adafruit_BMP280_library & Adafruit_AHT20 - Low-level register drivers for I2C sensory stack.
