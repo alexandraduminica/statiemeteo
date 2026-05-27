@@ -68,6 +68,7 @@ Weather Station
 <img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
 
 6. Software Stack and Dependencies
+
   The firmware arhitecture was compiled inside the PlatformIO ecosystem targetting the Arduion framework abstraction layers:
   - Adafruit_GFX & Adafruit_ST7735 - High speed hardware control for the SPI TFT monitor.
   - Adafruit_BMP280_library & Adafruit_AHT20 - Low-level register drivers for I2C sensory stack.
