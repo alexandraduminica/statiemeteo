@@ -40,7 +40,7 @@ Mini - TV Weather Station
 
 <img width="1329" height="1600" alt="image" src="https://github.com/user-attachments/assets/0eae639a-6af8-4c9f-bb71-11e15d1ff858" />
 
-<img width="900" height="1000" alt="image" src="https://github.com/user-attachments/assets/2ebfe7b9-0115-4e72-bc16-2a49e53d4b04" />
+<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/2ebfe7b9-0115-4e72-bc16-2a49e53d4b04" />
 
 
 4. Functional Algorithm
