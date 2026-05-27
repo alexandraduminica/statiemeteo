@@ -34,11 +34,11 @@ Mini - TV Weather Station
     -  Interface: High Speed SPI
     -  Role: Provides immediate local visual telemetry. Displays network connection milestones ("Connecting to WiFi...") and renders real-time data.
 
-<img width="1067" height="965" alt="image" src="https://github.com/user-attachments/assets/d18854ce-95ca-4c64-aa3d-ff897ff52a90" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/d18854ce-95ca-4c64-aa3d-ff897ff52a90" />
 
-<img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/4fb2e322-9e5a-4aa1-b81d-68ed93a12d04" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/4fb2e322-9e5a-4aa1-b81d-68ed93a12d04" />
 
-<img width="1329" height="1600" alt="image" src="https://github.com/user-attachments/assets/0eae639a-6af8-4c9f-bb71-11e15d1ff858" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/0eae639a-6af8-4c9f-bb71-11e15d1ff858" />
 
 <img width="200" height="300" alt="image" src="https://github.com/user-attachments/assets/2ebfe7b9-0115-4e72-bc16-2a49e53d4b04" />
 
@@ -62,10 +62,10 @@ Mini - TV Weather Station
 
     B. Web Dashboard: The interfata_web.html frontend application resides in the root directory and is automatically compiled into a live, public-facing dashboard. The application utilizes an MQTT over WebSockets library to establish a persistent connection with the public HiveMQ cloud instance straight from the client's web browser.
 
-<img width="849" height="1600" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/b2b87906-40d7-4e6e-a7d2-2a0a035f1002" />
 
     
-<img width="2559" height="1510" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
+<img width="600" height="700" alt="image" src="https://github.com/user-attachments/assets/bfd3794d-ea3a-41f0-b00d-c3387468cad4" />
 
 6. Software Stack and Dependencies
   The firmware arhitecture was compiled inside the PlatformIO ecosystem targetting the Arduion framework abstraction layers:
