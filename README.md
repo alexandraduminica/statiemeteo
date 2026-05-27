@@ -1,4 +1,4 @@
-Mini - TV Weather Station
+Weather Station
 
 1. Project Description
 
