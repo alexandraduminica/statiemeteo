@@ -74,7 +74,14 @@ Weather Station
   - ArduinoJson - zero-copy parsing of massive OpenWeatherMap REST payloads.
   - PubSubClient - Robust asynchronus message routing handling MQTT over TCP connections.
 
-
+7. Bibliography
+   - https://www.mouser.lt/pdfdocs/ESP32-      Tech_Reference.pdfsrsltid=AfmBOoqBnE_AEnyGe4cmF2Ay43XapUbqZSaOvuGyrK7Xhtu6z3R4IKYr
+   - https://ocw.cs.pub.ro/courses/iothings/sric/cursuri/protocols
+   - https://ocw.cs.pub.ro/courses/iothings/sric/cursuri/coap
+   - https://ocw.cs.pub.ro/courses/iothings/laboratoare/2025/lab1
+   - https://ocw.cs.pub.ro/courses/iothings/laboratoare/2025/lab3
+   - https://documentation.espressif.com/esp32-wroom-32_datasheet_en.pdf
+   - https://www.instructables.com/Mini-TV-Weather-Station-With-the-ESP32/
 
 
 
